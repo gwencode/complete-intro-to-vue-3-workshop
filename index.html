@@ -19,6 +19,18 @@
           <li v-for="favorite in favorites"> {{ favorite.name}} </li>
         </ul>
 
+        <h2>Add a new character</h2>
+        <div>
+          <label for="nameCharacter">Nom:</label>
+          <input type="text" v-model="newCharacter.name">
+          <label for="descriptionCharacter">Description:</label>
+          <input type="text" v-model="newCharacter.description">
+          <label for="vikingCharacter">Viking:</label>
+          <input type="checkbox" v-model="newCharacter.viking">
+          <button @click="addCharacter">Add</button>
+        </div>
+
+
         <div v-for="character in characters">
           <h3 v-if="character.viking" style="color: red"> {{ character.name }}</h3>
           <h3 v-else style="color: blue"> {{ character.name }}</h3>
@@ -52,11 +64,20 @@
               { name: "King Sigurd", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
               { name: "King Halfdan", description: "King of Wessex.", viking: false }
               ],
-            favorites: []
+            favorites: [],
+            newCharacter: { name: "", description: "", viking: false },
           }),
           methods: {
             addFavorite(character) {
               this.favorites.push(character)
+            },
+            addCharacter() {
+              if (this.newCharacter.name.trim() !== '' && this.newCharacter.description.trim() !== '') {
+                this.characters.push(this.newCharacter);
+                this.newCharacter = { name: "", description: "", viking: false }
+              } else {
+                alert("Nom et description doivent être renseignées.");
+              }
             }
           }
         }).mount('#app')
