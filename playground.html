@@ -14,8 +14,11 @@
       <p v-if="message.length % 2 === 0">Even: {{ message }}</p>
 
       <p v-else>Odd: {{ message.toUpperCase() }}</p>
-      <ul>
-        <li v-for="number in listOfNumbers"> {{ number }}</li>
+      <ul v-for="item in items">
+        <li>{{ item.name }}</li>
+        <ul>
+          <li v-for="number in item.list"> {{ number }}</li>
+        </ul>
       </ul>
 
     </div>
@@ -36,7 +39,11 @@
       data() {
         return {
           message: "Hello it works!",
-          listOfNumbers: [1, 2, 3, 4, 5]
+          items: [
+              { name: "Item 1", list:  [1, 2, 3] },
+              { name: "Item 2", list:  [4, 5, 6] },
+              { name: "Item 3", list:  [7, 8, 9] }
+            ],
         }
       }
     })
