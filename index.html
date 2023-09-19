@@ -13,6 +13,9 @@
         <h2>All names</h2>
         <p><span v-for="(character, index) in characters">{{ character.name }}{{ index === characters.length - 1 ? '' : ', '}} </span></p>
 
+        <h2>Statistics</h2>
+        <p>There are {{ vikingsCount }} vikings and {{ nonVikingsCount }} non vikings.</p>
+
         <h2>Favorites characters</h2>
         <p v-if="favorites.length === 0 "> These is no favorites</p>
         <ul v-else>
@@ -30,6 +33,10 @@
           <button @click="addCharacter">Add</button>
         </div>
 
+        <h2>Last character arrived</h2>
+        <p>{{ lastCharacter }}</p>
+
+        <h2>All characters</h2>
 
         <div v-for="character in characters">
           <h3 v-if="character.viking" style="color: red"> {{ character.name }}</h3>
@@ -47,26 +54,30 @@
           data: () => ({
             characters: [
               { name: "Ragnar Lothbrok", description: "Viking farmer who rose to fame by successful raids into England and eventually became a Scandinavian king.", viking: true },
-              { name: "Lagertha", description: "Shield-maiden and Ragnar's first wife.", viking: true},
+              { name: "Lagertha", description: "Shield-maiden and Ragnar's first wife.", viking: true },
               { name: "Bjorn Ironside", description: "Son of Ragnar and Lagertha. He is a fierce Viking warrior.", viking: true },
               { name: "Floki", description: "Viking shipbuilder and heathen priest.", viking: true },
               { name: "Athelstan", description: "Monk captured by Ragnar on his first raid in England. He becomes Ragnar's friend and translator.", viking: false },
               { name: "King Ecbert", description: "King of Wessex and Mercia. He is a cunning and ruthless politician.", viking: false },
               { name: "King Aelle", description: "King of Northumbria. He is a devout Christian and a fierce enemy of Ragnar.", viking: false },
-              { name: "King Harald Finehair", description: "King of Vestfold and Rogaland. He is a fierce warrior and a cunning strategist.", viking: true },
-              { name: "King Olaf", description: "King of Vestfold and Rogaland. He is a fierce warrior and a cunning strategist.", viking: true },
               { name: "King Alfred", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: false },
-              { name: "King Aethelred", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: false },
-              { name: "King Ivar", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
-              { name: "King Bjorn", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
-              { name: "King Ubbe", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
-              { name: "King Hvitserk", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
-              { name: "King Sigurd", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
-              { name: "King Halfdan", description: "King of Wessex.", viking: false }
+              { name: "Ivar", description: "Son of Ragnar", viking: true },
+              { name: "Ubbe", description: "Son of Ragnar", viking: true },
+              { name: "Hvitserk", description: "Son of Ragnar", viking: true },
+              { name: "Sigurd", description: "Son of Ragnar", viking: true },
               ],
             favorites: [],
             newCharacter: { name: "", description: "", viking: false },
+            lastCharacter: "Pas de nouveau n°10 dans ma team !"
           }),
+          computed: {
+            vikingsCount() {
+              return this.characters.filter(character => character.viking).length;
+            },
+            nonVikingsCount() {
+              return this.characters.filter(character => !character.viking).length;
+            }
+          },
           methods: {
             addFavorite(character) {
               this.favorites.push(character)
