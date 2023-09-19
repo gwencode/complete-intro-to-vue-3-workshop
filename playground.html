@@ -12,12 +12,11 @@
     <div id="app">
     <h1>Counter</h1>
     <p> {{ count }} </p>
-    <button v-on:click="incrementCount">Increment count</button>
+    <button @click="incrementCount(incrementAmount, $event)">Increment count</button>
     <h3>{{ incrementAmount }}</h3>
     <div>
       <label for="incrementAmount">Increment by:</label>
-      <input type="number"
-        v-model="incrementAmount">
+      <input type="number" v-model="incrementAmount">
     </div>
     <hr />
     <h1>Hello!</h1>
@@ -59,7 +58,9 @@
           }
         },
         methods: {
-          incrementCount() {
+          incrementCount(newAmount, event) {
+            // console.log(newAmount);
+            // console.log(event);
             this.count += this.incrementAmount
         }
       }

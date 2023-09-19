@@ -12,10 +12,18 @@
       <div id="app">
         <h2>All names</h2>
         <p><span v-for="(character, index) in characters">{{ character.name }}{{ index === characters.length - 1 ? '' : ', '}} </span></p>
+
+        <h2>Favorites characters</h2>
+        <p v-if="favorites.length === 0 "> These is no favorites</p>
+        <ul v-else>
+          <li v-for="favorite in favorites"> {{ favorite.name}} </li>
+        </ul>
+
         <div v-for="character in characters">
           <h3 v-if="character.viking" style="color: red"> {{ character.name }}</h3>
           <h3 v-else style="color: blue"> {{ character.name }}</h3>
           <p> {{ character.description }} </p>
+          <button @click="addFavorite(character)">Add to favorite</button>
         </div>
 
       </div>
@@ -43,8 +51,14 @@
               { name: "King Hvitserk", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
               { name: "King Sigurd", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
               { name: "King Halfdan", description: "King of Wessex.", viking: false }
-            ]
-          })
+              ],
+            favorites: []
+          }),
+          methods: {
+            addFavorite(character) {
+              this.favorites.push(character)
+            }
+          }
         }).mount('#app')
       </script>
     </body>
