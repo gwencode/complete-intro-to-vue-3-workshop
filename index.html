@@ -10,9 +10,11 @@
     <body>
       <h1>Vikings</h1>
       <div id="app">
+        <h2>All names</h2>
+        <p><span v-for="(character, index) in characters">{{ character.name }}{{ index === characters.length - 1 ? '' : ', '}} </span></p>
         <div v-for="character in characters">
-          <h2 v-if="character.viking" style="color: red"> {{ character.name }}</h2>
-          <h2 v-else style="color: blue"> {{ character.name }}</h2>
+          <h3 v-if="character.viking" style="color: red"> {{ character.name }}</h3>
+          <h3 v-else style="color: blue"> {{ character.name }}</h3>
           <p> {{ character.description }} </p>
         </div>
 
