@@ -7,5 +7,43 @@
     <title>Document</title>
   </head>
   <body>
-    <body></body>
+    <body>
+      <h1>Vikings</h1>
+      <div id="app">
+        <div v-for="character in characters">
+          <h2 v-if="character.viking" style="color: red"> {{ character.name }}</h2>
+          <h2 v-else style="color: blue"> {{ character.name }}</h2>
+          <p> {{ character.description }} </p>
+        </div>
+
+      </div>
+
+      <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+      <script>
+        Vue.createApp({
+          data: () => ({
+            characters: [
+              { name: "Ragnar Lothbrok", description: "Viking farmer who rose to fame by successful raids into England and eventually became a Scandinavian king.", viking: true },
+              { name: "Lagertha", description: "Shield-maiden and Ragnar's first wife.", viking: true},
+              { name: "Bjorn Ironside", description: "Son of Ragnar and Lagertha. He is a fierce Viking warrior.", viking: true },
+              { name: "Floki", description: "Viking shipbuilder and heathen priest.", viking: true },
+              { name: "Athelstan", description: "Monk captured by Ragnar on his first raid in England. He becomes Ragnar's friend and translator.", viking: false },
+              { name: "King Ecbert", description: "King of Wessex and Mercia. He is a cunning and ruthless politician.", viking: false },
+              { name: "King Aelle", description: "King of Northumbria. He is a devout Christian and a fierce enemy of Ragnar.", viking: false },
+              { name: "King Harald Finehair", description: "King of Vestfold and Rogaland. He is a fierce warrior and a cunning strategist.", viking: true },
+              { name: "King Olaf", description: "King of Vestfold and Rogaland. He is a fierce warrior and a cunning strategist.", viking: true },
+              { name: "King Alfred", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: false },
+              { name: "King Aethelred", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: false },
+              { name: "King Ivar", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
+              { name: "King Bjorn", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
+              { name: "King Ubbe", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
+              { name: "King Hvitserk", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
+              { name: "King Sigurd", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: true },
+              { name: "King Halfdan", description: "King of Wessex.", viking: false }
+            ]
+          })
+        }).mount('#app')
+      </script>
+    </body>
 </html>
