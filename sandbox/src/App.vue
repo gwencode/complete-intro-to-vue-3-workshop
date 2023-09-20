@@ -60,10 +60,10 @@
   <h1>Hello!</h1>
   <p v-if="message.length % 2 === 0">Even: {{ message }}</p>
   <p v-else>Odd: {{ message.toUpperCase() }}</p>
-  <ul v-for="item in items">
+  <ul v-for="(item, index) in items" :key="`item-${index}`">
     <li>{{ item.name }}</li>
     <ul>
-      <li v-for="number in item.list"> {{ number }}</li>
+      <li v-for="(number, index) in item.list" :key="`number-${index}`"> {{ number }}</li>
     </ul>
   </ul>
 
