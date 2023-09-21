@@ -1,56 +1,50 @@
 <script>
-  export default {
-    data: () => ({
-      characters: [
-        { name: "Ragnar Lothbrok", description: "Viking farmer who rose to fame by successful raids into England and eventually became a Scandinavian king.", viking: true },
-        { name: "Lagertha", description: "Shield-maiden and Ragnar's first wife.", viking: true },
-        { name: "Bjorn Ironside", description: "Son of Ragnar and Lagertha. He is a fierce Viking warrior.", viking: true },
-        { name: "Floki", description: "Viking shipbuilder and heathen priest.", viking: true },
-        { name: "Athelstan", description: "Monk captured by Ragnar on his first raid in England. He becomes Ragnar's friend and translator.", viking: false },
-        { name: "King Ecbert", description: "King of Wessex and Mercia. He is a cunning and ruthless politician.", viking: false },
-        { name: "King Aelle", description: "King of Northumbria. He is a devout Christian and a fierce enemy of Ragnar.", viking: false },
-        { name: "King Alfred", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: false },
-        { name: "Ivar", description: "Son of Ragnar", viking: true },
-        { name: "Ubbe", description: "Son of Ragnar", viking: true },
-        { name: "Hvitserk", description: "Son of Ragnar", viking: true },
-        { name: "Sigurd", description: "Son of Ragnar", viking: true },
-        ],
-      favorites: [],
-      newCharacter: { name: "", description: "", viking: false },
-      lastCharacter: "Pas de nouveau n°10 dans ma team !"
-    }),
-    computed: {
-      vikingsCount() {
-        return this.characters.filter(character => character.viking).length;
-      },
-      nonVikingsCount() {
-        return this.characters.filter(character => !character.viking).length;
-      }
+import VikingsStatistics from './components/VikingsStatistics.vue';
+
+export default {
+  components: {
+    VikingsStatistics
+  },
+  data: () => ({
+    characters: [
+      { name: "Ragnar Lothbrok", description: "Viking farmer who rose to fame by successful raids into England and eventually became a Scandinavian king.", viking: true },
+      { name: "Lagertha", description: "Shield-maiden and Ragnar's first wife.", viking: true },
+      { name: "Bjorn Ironside", description: "Son of Ragnar and Lagertha. He is a fierce Viking warrior.", viking: true },
+      { name: "Floki", description: "Viking shipbuilder and heathen priest.", viking: true },
+      { name: "Athelstan", description: "Monk captured by Ragnar on his first raid in England. He becomes Ragnar's friend and translator.", viking: false },
+      { name: "King Ecbert", description: "King of Wessex and Mercia. He is a cunning and ruthless politician.", viking: false },
+      { name: "King Aelle", description: "King of Northumbria. He is a devout Christian and a fierce enemy of Ragnar.", viking: false },
+      { name: "King Alfred", description: "King of Wessex. He is a devout Christian and a fierce enemy of the Vikings.", viking: false },
+      { name: "Ivar", description: "Son of Ragnar", viking: true },
+      { name: "Ubbe", description: "Son of Ragnar", viking: true },
+      { name: "Hvitserk", description: "Son of Ragnar", viking: true },
+      { name: "Sigurd", description: "Son of Ragnar", viking: true },
+      ],
+    favorites: [],
+    newCharacter: { name: "", description: "", viking: false },
+    lastCharacter: "Pas de nouveau n°10 dans ma team !"
+  }),
+  methods: {
+    addFavorite(character) {
+      this.favorites.push(character)
     },
-    methods: {
-      addFavorite(character) {
-        this.favorites.push(character)
-      },
-      addCharacter() {
-        if (this.newCharacter.name.trim() !== '' && this.newCharacter.description.trim() !== '') {
-          this.characters.push(this.newCharacter);
-          this.newCharacter = { name: "", description: "", viking: false };
-          this.lastCharacter = `${this.characters[this.characters.length - 1].name} vient d'arriver !`;
-        } else {
-          alert("Nom et description doivent être renseignées.");
-        }
+    addCharacter() {
+      if (this.newCharacter.name.trim() !== '' && this.newCharacter.description.trim() !== '') {
+        this.characters.push(this.newCharacter);
+        this.newCharacter = { name: "", description: "", viking: false };
+        this.lastCharacter = `${this.characters[this.characters.length - 1].name} vient d'arriver !`;
+      } else {
+        alert("Nom et description doivent être renseignées.");
       }
     }
   }
+}
 </script>
 
 <template>
   <h1>Vikings</h1>
   <h2>All names</h2>
   <p><span v-for="(character, index) in characters" :key="`name-${index}`">{{ character.name }}{{ index === characters.length - 1 ? '' : ', '}} </span></p>
-
-  <h2>Statistics</h2>
-  <p>There are {{ vikingsCount }} vikings and {{ nonVikingsCount }} non vikings.</p>
 
   <h2>Favorites characters</h2>
   <p v-if="favorites.length === 0 "> These is no favorites</p>
@@ -68,6 +62,9 @@
     <input type="checkbox" v-model="newCharacter.viking">
     <button @click="addCharacter">Add</button>
   </div>
+
+  <VikingsStatistics v-bind:characters="characters"/>
+  <!-- SAME AS : <VikingsStatistics :characters="characters"/> -->
 
   <h2>Last character arrived</h2>
   <p>{{ lastCharacter }}</p>
