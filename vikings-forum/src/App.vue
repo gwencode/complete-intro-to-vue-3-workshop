@@ -30,6 +30,11 @@ export default {
       ],
     favorites: []
   }),
+  methods: {
+    addFavorite(character) {
+      this.favorites.push(character)
+    }
+  }
 }
 </script>
 
@@ -44,6 +49,6 @@ export default {
 
   <VikingsStatistics :characters="characters"/>
 
-  <AllCharacters :characters="characters" :favorites="favorites" />
+  <AllCharacters :characters="characters" :favorites="favorites" @add-favorite="addFavorite" />
 
 </template>
