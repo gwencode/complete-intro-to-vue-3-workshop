@@ -6,9 +6,6 @@ export default {
       required: true
     }
   },
-  // data: () => {
-
-  // },
   computed: {
     vikingsCount() {
       return this.characters.filter(character => character.viking).length;

@@ -2,12 +2,14 @@
 import VikingsStatistics from './components/VikingsStatistics.vue';
 import AllNames from './components/AllNames.vue';
 import FavoritesCharacters from './components/FavoritesCharacters.vue';
+import AddCharacter from './components/AddCharacter.vue';
 
 export default {
   components: {
     VikingsStatistics,
     AllNames,
-    FavoritesCharacters
+    FavoritesCharacters,
+    AddCharacter
   },
   data: () => ({
     characters: [
@@ -24,22 +26,11 @@ export default {
       { name: "Hvitserk", description: "Son of Ragnar", viking: true },
       { name: "Sigurd", description: "Son of Ragnar", viking: true },
       ],
-    favorites: [],
-    newCharacter: { name: "", description: "", viking: false },
-    lastCharacter: "Pas de nouveau n°10 dans ma team !"
+    favorites: []
   }),
   methods: {
     addFavorite(character) {
       this.favorites.push(character)
-    },
-    addCharacter() {
-      if (this.newCharacter.name.trim() !== '' && this.newCharacter.description.trim() !== '') {
-        this.characters.push(this.newCharacter);
-        this.newCharacter = { name: "", description: "", viking: false };
-        this.lastCharacter = `${this.characters[this.characters.length - 1].name} vient d'arriver !`;
-      } else {
-        alert("Nom et description doivent être renseignées.");
-      }
     }
   }
 }
@@ -52,21 +43,9 @@ export default {
 
   <FavoritesCharacters :favorites="favorites" />
 
-  <h2>Add a new character</h2>
-  <div>
-    <label for="nameCharacter">Nom:</label>
-    <input type="text" v-model="newCharacter.name">
-    <label for="descriptionCharacter">Description:</label>
-    <input type="text" v-model="newCharacter.description">
-    <label for="vikingCharacter">Viking:</label>
-    <input type="checkbox" v-model="newCharacter.viking">
-    <button @click="addCharacter">Add</button>
-  </div>
+  <AddCharacter :characters="characters"/>
 
   <VikingsStatistics :characters="characters"/>
-
-  <h2>Last character arrived</h2>
-  <p>{{ lastCharacter }}</p>
 
   <h2>All characters</h2>
 
