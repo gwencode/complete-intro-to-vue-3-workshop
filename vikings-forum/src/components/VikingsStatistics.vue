@@ -22,6 +22,8 @@ export default {
 
 <template>
   <h2>Statistics</h2>
-  <p>There are {{ vikingsCount }} vikings and {{ nonVikingsCount }} non vikings.</p>
-
+  <ul>
+    <li>{{ vikingsCount }} Vikings </li>
+    <li>{{ nonVikingsCount }} Christians</li>
+  </ul>
 </template>
