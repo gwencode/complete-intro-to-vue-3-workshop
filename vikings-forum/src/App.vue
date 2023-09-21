@@ -1,11 +1,13 @@
 <script>
 import VikingsStatistics from './components/VikingsStatistics.vue';
 import AllNames from './components/AllNames.vue';
+import FavoritesCharacters from './components/FavoritesCharacters.vue';
 
 export default {
   components: {
     VikingsStatistics,
-    AllNames
+    AllNames,
+    FavoritesCharacters
   },
   data: () => ({
     characters: [
@@ -48,11 +50,7 @@ export default {
   <AllNames v-bind:characters="characters"/>
   <!-- SAME AS : <AllNames :characters="characters"/> -->
 
-  <h2>Favorites characters</h2>
-  <p v-if="favorites.length === 0 "> These is no favorites</p>
-  <ul v-else>
-    <li v-for="(favorite, index) in favorites" :key="`favorite-${index}`"> {{ favorite.name}} </li>
-  </ul>
+  <FavoritesCharacters :favorites="favorites" />
 
   <h2>Add a new character</h2>
   <div>
