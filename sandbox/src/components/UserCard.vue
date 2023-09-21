@@ -7,13 +7,15 @@ export default {
       type: Object,
       required: true
     }
-  }
+  },
+  emits: ['change-name']
 }
 </script>
 
 <template>
   <h1>User: {{ user.name }}</h1>
   <p>Age: {{ user.age }}</p>
+  <button @click="$emit('change-name')">Change Name</button>
 </template>
 
 <!-- TWO PROPS WITH SIMPLE TYPE -->

@@ -30,24 +30,28 @@ export default {
           age: this.userData.age
         }
       }
+    },
+    methods: {
+      changeName() {
+        this.userData.name = "Charlie";
+      },
+
+      // filterObjectKeys(obj, keys) {
+      //   return keys.reduce((acc, key) => {
+      //     if (obj.hasOwnProperty(key)) {
+      //       acc[key] = obj[key];
+      //     }
+      //     return acc;
+      //   }, {});
+      // }
     }
-    // methods: {
-    //   filterObjectKeys(obj, keys) {
-    //     return keys.reduce((acc, key) => {
-    //       if (obj.hasOwnProperty(key)) {
-    //         acc[key] = obj[key];
-    //       }
-    //       return acc;
-    //     }, {});
-    //   }
-    // }
   }
 </script>
 
 <template>
   <!-- ENTIRE OBJECT PASSED AS PROPS -->
 
-  <UserCard :user="refinedUserData" />
+  <UserCard :user="refinedUserData" @change-name="changeName"/>
   <!-- <UserCard :user="filterObjectKeys(userData, ['name', 'age'])" /> -->
 
   <!-- TWO PROPS WITH SIMPLE TYPE -->
