@@ -1,9 +1,11 @@
 <script>
 import BaseCounter from './components/BaseCounter.vue'
+import UserCard from './components/UserCard.vue'
 
 export default {
   components: {
-    BaseCounter
+    BaseCounter,
+    UserCard
   },
   data() {
     return {
@@ -13,12 +15,44 @@ export default {
           { name: "Item 2", list:  [4, 5, 6] },
           { name: "Item 3", list:  [7, 8, 9] }
         ],
+        userData: {
+          name: "Gwendal",
+          age: 28,
+          email: "gwen@gmail.com",
+          favoriteNumbers: [1, 2, 3, 4, 5]
+        }
+      }
+    },
+    computed: {
+      refinedUserData() {
+        return {
+          name: this.userData.name,
+          age: this.userData.age
+        }
       }
     }
+    // methods: {
+    //   filterObjectKeys(obj, keys) {
+    //     return keys.reduce((acc, key) => {
+    //       if (obj.hasOwnProperty(key)) {
+    //         acc[key] = obj[key];
+    //       }
+    //       return acc;
+    //     }, {});
+    //   }
+    // }
   }
 </script>
 
 <template>
+  <!-- ENTIRE OBJECT PASSED AS PROPS -->
+
+  <UserCard :user="refinedUserData" />
+  <!-- <UserCard :user="filterObjectKeys(userData, ['name', 'age'])" /> -->
+
+  <!-- TWO PROPS WITH SIMPLE TYPE -->
+  <!-- <UserCard :name="userData.name" :age="userData.age"/> -->
+
   <BaseCounter />
   <hr />
 
