@@ -3,13 +3,15 @@ import VikingsStatistics from './components/VikingsStatistics.vue';
 import AllNames from './components/AllNames.vue';
 import FavoritesCharacters from './components/FavoritesCharacters.vue';
 import AddCharacter from './components/AddCharacter.vue';
+import AllCharacters from './components/AllCharacters.vue';
 
 export default {
   components: {
     VikingsStatistics,
     AllNames,
     FavoritesCharacters,
-    AddCharacter
+    AddCharacter,
+    AllCharacters
   },
   data: () => ({
     characters: [
@@ -28,18 +30,13 @@ export default {
       ],
     favorites: []
   }),
-  methods: {
-    addFavorite(character) {
-      this.favorites.push(character)
-    }
-  }
 }
 </script>
 
 <template>
   <h1>Vikings</h1>
-  <AllNames v-bind:characters="characters"/>
-  <!-- SAME AS : <AllNames :characters="characters"/> -->
+   <AllNames :characters="characters"/>
+  <!-- SAME AS : <AllNames v-bind:characters="characters"/> -->
 
   <FavoritesCharacters :favorites="favorites" />
 
@@ -47,12 +44,6 @@ export default {
 
   <VikingsStatistics :characters="characters"/>
 
-  <h2>All characters</h2>
+  <AllCharacters :characters="characters" :favorites="favorites" />
 
-  <div v-for="(character, index) in characters" :key="`character-${index}`">
-    <h3 v-if="character.viking" style="color: red"> {{ character.name }}</h3>
-    <h3 v-else style="color: blue"> {{ character.name }}</h3>
-    <p> {{ character.description }} </p>
-    <button @click="addFavorite(character)">Add to favorite</button>
-  </div>
 </template>
