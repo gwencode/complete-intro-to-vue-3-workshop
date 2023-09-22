@@ -1,11 +1,13 @@
 <script>
 import BaseCounter from './components/BaseCounter.vue'
 import UserCard from './components/UserCard.vue'
+import BaseButton from './components/BaseButton.vue'
 
 export default {
   components: {
     BaseCounter,
-    UserCard
+    UserCard,
+    BaseButton
   },
   data() {
     return {
@@ -50,6 +52,14 @@ export default {
 
 <template>
   <!-- ENTIRE OBJECT PASSED AS PROPS -->
+
+  <BaseButton>
+    👋 Hi!
+  </BaseButton>
+  <br><br>
+  <BaseButton />
+  <br><br>
+  <BaseButton left="true"></BaseButton>
 
   <UserCard :user="refinedUserData" @change-name="changeName"/>
   <!-- <UserCard :user="filterObjectKeys(userData, ['name', 'age'])" /> -->
