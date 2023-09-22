@@ -33,23 +33,19 @@ export default {
       <a href="#" @click.prevent="showLoginPage">Login</a>
     </nav>
   </header>
-  <HomePage v-if="currentPage === 'Home'" />
-  <LoginPage v-else />
+  <main>
+    <component :is="currentPage + 'Page'" />
+  </main>
 </template>
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
-body {
+main {
   background-color: #f5f5f5;
   color: #333;
   font-size: 16px;
   line-height: 1.5;
+  margin: 20px;
 }
 
 .header {
@@ -83,11 +79,6 @@ body {
 
 h1 {
   font-size: 2rem;
-  margin: 20px;
-}
-
-p {
-  margin: 20px;
 }
 
 </style>
