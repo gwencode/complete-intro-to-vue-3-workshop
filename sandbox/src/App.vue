@@ -2,7 +2,7 @@
 // https://pokeapi.co/api/v2/pokemon?limit=151
 export default {
   data: () => ({
-      pokedex: [],
+      pokedex: [1, 2, 3],
     }),
   methods: {
     async fetchPokemon() {

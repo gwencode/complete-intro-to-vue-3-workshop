@@ -1,0 +1,93 @@
+<script>
+import HomePage from './components/HomePage.vue'
+import LoginPage from './components/LoginPage.vue'
+
+export default {
+  components: {
+    HomePage,
+    LoginPage
+  },
+  data() {
+    return {
+      currentPage: 'Home'
+    }
+  },
+  methods: {
+   showHomePage() {
+     this.currentPage = 'Home'
+   },
+    showLoginPage() {
+      this.currentPage = 'Login'
+    }
+  }
+}
+</script>
+
+<template>
+  <header class="header">
+    <span class="logo">
+      <img src="@/assets/logo.svg" width="30"> C'est La Vue
+    </span>
+    <nav class="nav">
+      <a href="#" @click.prevent="showHomePage">Home</a>
+      <a href="#" @click.prevent="showLoginPage">Login</a>
+    </nav>
+  </header>
+  <HomePage v-if="currentPage === 'Home'" />
+  <LoginPage v-else />
+</template>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.header {
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+}
+
+.logo img {
+  margin-right: 10px;
+}
+
+.nav a {
+  color: #333;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 20px;
+}
+
+p {
+  margin: 20px;
+}
+
+</style>
