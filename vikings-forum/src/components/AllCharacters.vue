@@ -4,10 +4,6 @@ export default {
     characters: {
       type: Array,
       required: true
-    },
-    favorites: {
-      type: Array,
-      required: true
     }
   },
   emits: ['add-favorite']

@@ -49,6 +49,6 @@ export default {
 
   <VikingsStatistics :characters="characters"/>
 
-  <AllCharacters :characters="characters" :favorites="favorites" @add-favorite="addFavorite" />
+  <AllCharacters :characters="characters" @add-favorite="addFavorite" />
 
 </template>
