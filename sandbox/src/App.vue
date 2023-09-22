@@ -9,7 +9,10 @@ export default {
 
 <template>
   <h1>New App</h1>
-  <FullPokedex />
+  <Suspense>
+    <FullPokedex />
+    <template v-slot:fallback>Loading Pokedex data...</template>
+  </Suspense>
 </template>
 
 <style>
