@@ -1,13 +1,15 @@
 <script>
-import BaseCounter from './components/BaseCounter.vue'
-import UserCard from './components/UserCard.vue'
 import BaseButton from './components/BaseButton.vue'
+import BaseCounter from './components/BaseCounter.vue'
+import BaseLayout from './components/BaseLayout.vue'
+import UserCard from './components/UserCard.vue'
 
 export default {
   components: {
+    BaseButton,
     BaseCounter,
+    BaseLayout,
     UserCard,
-    BaseButton
   },
   data() {
     return {
@@ -51,7 +53,25 @@ export default {
 </script>
 
 <template>
-  <!-- ENTIRE OBJECT PASSED AS PROPS -->
+
+  <BaseLayout>
+    <template v-slot:sidebar>
+      Aside
+    </template>
+    <template v-slot:main>
+      <!-- ENTIRE OBJECT PASSED AS PROPS -->
+      <UserCard :user="refinedUserData" @change-name="changeName"/>
+      <!-- <UserCard :user="filterObjectKeys(userData, ['name', 'age'])" /> -->
+
+      <!-- TWO PROPS WITH SIMPLE TYPE -->
+      <!-- <UserCard :name="userData.name" :age="userData.age"/> -->
+    </template>
+    <template v-slot:footer>
+      <BaseCounter />
+    </template>
+  </BaseLayout>
+
+  <br>
 
   <BaseButton>
     👋 Hi!
@@ -60,15 +80,6 @@ export default {
   <BaseButton />
   <br><br>
   <BaseButton left="true"></BaseButton>
-
-  <UserCard :user="refinedUserData" @change-name="changeName"/>
-  <!-- <UserCard :user="filterObjectKeys(userData, ['name', 'age'])" /> -->
-
-  <!-- TWO PROPS WITH SIMPLE TYPE -->
-  <!-- <UserCard :name="userData.name" :age="userData.age"/> -->
-
-  <BaseCounter />
-  <hr />
 
   <h1>Hello!</h1>
   <p v-if="message.length % 2 === 0">Even: {{ message }}</p>
