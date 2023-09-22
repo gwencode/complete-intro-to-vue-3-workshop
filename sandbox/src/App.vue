@@ -58,7 +58,8 @@ export default {
     <template v-slot:sidebar>
       Aside
     </template>
-    <template v-slot:main>
+    <!-- Shortcut for v-slot -->
+    <template #main>
       <!-- ENTIRE OBJECT PASSED AS PROPS -->
       <UserCard :user="refinedUserData" @change-name="changeName"/>
       <!-- <UserCard :user="filterObjectKeys(userData, ['name', 'age'])" /> -->
