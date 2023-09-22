@@ -3,10 +3,12 @@
 </script>
 
 <template>
-  <h1>Login</h1>
-  <label for="email">Email</label>
-  <input type="email" id="email" />
-  <button>Continue with email</button>
+  <main>
+    <h1>Login</h1>
+    <label for="email">Email</label>
+    <input type="email" id="email" />
+    <button>Continue with email</button>
+  </main>
 </template>
 
 <style>

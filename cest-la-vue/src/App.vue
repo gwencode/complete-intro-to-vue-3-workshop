@@ -39,9 +39,7 @@ export default {
       <a href="#" @click.prevent="showLoginPage">Login</a>
     </nav>
   </header>
-  <main>
-    <component :is="currentPage + 'Page'" />
-  </main>
+  <component :is="currentPage + 'Page'" v-cloak/>
 </template>
 
 <style>
