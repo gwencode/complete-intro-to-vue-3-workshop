@@ -1,17 +1,19 @@
 <script>
-import VikingsStatistics from './components/VikingsStatistics.vue';
-import AllNames from './components/AllNames.vue';
-import FavoritesCharacters from './components/FavoritesCharacters.vue';
 import AddCharacter from './components/AddCharacter.vue';
 import AllCharacters from './components/AllCharacters.vue';
+import AllNames from './components/AllNames.vue';
+import CharactersLayout from './components/CharactersLayout.vue';
+import FavoritesCharacters from './components/FavoritesCharacters.vue';
+import VikingsStatistics from './components/VikingsStatistics.vue';
 
 export default {
   components: {
-    VikingsStatistics,
-    AllNames,
-    FavoritesCharacters,
     AddCharacter,
-    AllCharacters
+    AllCharacters,
+    AllNames,
+    CharactersLayout,
+    FavoritesCharacters,
+    VikingsStatistics,
   },
   data: () => ({
     characters: [
@@ -42,16 +44,25 @@ export default {
 </script>
 
 <template>
-  <h1>Vikings</h1>
-   <AllNames :characters="characters"/>
-  <!-- SAME AS : <AllNames v-bind:characters="characters"/> -->
+  <h1 style="text-align: center;">Vikings</h1>
 
-  <FavoritesCharacters :favorites="favorites" @remove-favorite="removeFavorite"/>
-
-  <AddCharacter :characters="characters"/>
-
-  <VikingsStatistics :characters="characters"/>
-
+  <CharactersLayout>
+    <template v-slot:title>Characters</template>
+    <template v-slot:col-1>
+      <AllNames :characters="characters"/>
+      <!-- SAME AS : <AllNames v-bind:characters="characters"/> -->
+    </template>
+    <template v-slot:col-2>
+      <FavoritesCharacters :favorites="favorites" @remove-favorite="removeFavorite"/>
+    </template>
+    <template v-slot:col-3>
+      <AddCharacter :characters="characters"/>
+    </template>
+    <template v-slot:col-4>
+      <VikingsStatistics :characters="characters"/>
+    </template>
+  </CharactersLayout>
   <AllCharacters :characters="characters" @add-favorite="addFavorite" />
+
 
 </template>
