@@ -33,6 +33,9 @@ export default {
   methods: {
     addFavorite(character) {
       this.favorites.push(character)
+    },
+    removeFavorite(character) {
+      this.favorites = this.favorites.filter(favorite => favorite.name !== character.name)
     }
   }
 }
@@ -43,7 +46,7 @@ export default {
    <AllNames :characters="characters"/>
   <!-- SAME AS : <AllNames v-bind:characters="characters"/> -->
 
-  <FavoritesCharacters :favorites="favorites" />
+  <FavoritesCharacters :favorites="favorites" @remove-favorite="removeFavorite"/>
 
   <AddCharacter :characters="characters"/>
 
