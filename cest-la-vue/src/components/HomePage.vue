@@ -9,9 +9,6 @@ const shortUserList = computed(() => {
 
 })
 
-console.log(users)
-console.log(shortUserList)
-
 </script>
 
 <template>

@@ -4,9 +4,6 @@ import { computed, defineProps, defineEmits, ref, reactive } from "vue";
 import { users } from '../composables/useUserStore';
 import { changeFirstUser, changeSecondUser } from '../composables/useUserFonction';
 
-console.log(users)
-console.log(users.value)
-
 defineProps({
   title: {
     type: String,
@@ -14,7 +11,7 @@ defineProps({
   }
 })
 
-const emits = defineEmits(['change-first-user']);
+// const emits = defineEmits(['change-first-user']);
 
 // const changeFirstUser = () => {
 //   users.value[0] = {
