@@ -1,5 +1,5 @@
 <script>
-import { newCount } from '../composables/countStore'
+import { newCount } from '../composables/useCountStore'
 
 export default {
   setup() {
