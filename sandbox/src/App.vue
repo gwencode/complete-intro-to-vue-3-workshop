@@ -10,7 +10,7 @@ export default {
 <template>
   <h1>New App</h1>
   <Suspense>
-    <FullPokedex />
+    <FullPokedex region="Kante" />
     <template v-slot:fallback>Loading Pokedex data...</template>
   </Suspense>
 </template>

@@ -1,7 +1,13 @@
 <script setup>
 
 import BaseButton from "./BaseButton.vue";
-import { computed, ref, reactive } from "vue";
+import { computed, defineProps, defineEmits, ref, reactive } from "vue";
+
+const props = defineProps({
+  region: {
+    type: String,
+  }
+});
 
 // Pure VanillaJS inside setup. Be very explicit and return
 const regionName = ref('Kanto');
@@ -17,7 +23,7 @@ const state = reactive({
 });
 
 const elementTypeUpperCase = computed(() => {
-  return state.elementType.toUpperCase();
+  return state.elementType.toUpperCase() + " " + props.region;
 })
 
 const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
