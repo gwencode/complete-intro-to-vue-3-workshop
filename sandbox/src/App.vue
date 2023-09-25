@@ -1,18 +1,13 @@
-<script>
-import FullPokedex from "./components/FullPokedex.vue"
-export default {
-  components: {
-    FullPokedex,
-  }
-}
+<script setup>
+import BaseCounter from "./components/BaseCounter.vue"
+import UserCard from "./components/UserCard.vue"
+
 </script>
 
 <template>
-  <h1>New App</h1>
-  <Suspense>
-    <FullPokedex region="Kante" />
-    <template v-slot:fallback>Loading Pokedex data...</template>
-  </Suspense>
+  <BaseCounter />
+  <UserCard :user="{ name: 'Ben', age: 28 }"  />
+
 </template>
 
 <style>

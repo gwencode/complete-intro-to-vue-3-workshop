@@ -1,7 +1,14 @@
 <!-- ENTIRE OBJECT PASSED AS PROPS -->
 
 <script>
+import { newCount } from '../composables/countStore'
+
 export default {
+  setup() {
+    return {
+      newCount,
+    };
+  },
   props: {
     user: {
       type: Object,
@@ -10,10 +17,12 @@ export default {
   },
   emits: ['change-name']
 }
+
 </script>
 
 <template>
   <h1>User: {{ user.name }}</h1>
+  <h2>New Count: {{ newCount }}</h2>
   <p>Age: {{ user.age }}</p>
   <button @click="$emit('change-name')">Change Name</button>
 </template>
