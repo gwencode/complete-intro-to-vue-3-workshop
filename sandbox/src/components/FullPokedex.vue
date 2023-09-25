@@ -9,11 +9,13 @@ const props = defineProps({
   }
 });
 
+const emits = defineEmits(['change-region']);
+
 // Pure VanillaJS inside setup. Be very explicit and return
 const regionName = ref('Kanto');
 
 const regionNameUpperCase = computed(() => {
-  console.log(regionName);
+  // console.log(regionName);
   return regionName.value.toUpperCase();
   // With ref, regionName is not a string but a RefImpl
 });
@@ -32,6 +34,7 @@ const pokedex = data.results;
 
 const changeRegionName = () => {
   regionName.value = "Hoenn";
+  emits("change-region");
 }
 
 // computed: {
