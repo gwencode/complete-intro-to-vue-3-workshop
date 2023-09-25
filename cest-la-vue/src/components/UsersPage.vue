@@ -10,17 +10,50 @@ export default {
   async setup() {
     const response = await fetch("https://jsonplaceholder.typicode.com/users")
     const data = await response.json();
-    const users = ref(data);
-    console.log(users);
+    // const users = ref(data);
+
+    const state = reactive({
+      usersState: data
+    })
+    // console.log(state);
+
+    const users = computed(() => {
+      return state.usersState;
+    })
+
+    // const usersComputed = computed(() => {
+    //   return this.users.push( {
+    //     id: 12,
+    //     name: "Corentin LE BRIS",
+    //     username: "coco22",
+    //     email: "coco@me.com",
+    //     phone: "06 00 00 00 00"
+    //   });
+    // })
+
+    // console.log(usersComputed);
 
     return {
       users
     }
   },
+  computed: {
+    usersComputed() {
+      this.users.push({
+        id: 11,
+        name: "Corentin LE BRIS",
+        username: "coco22",
+        email: "coco@me.com",
+        phone: "06 00 00 00 00"
+      });
+      console.log(this.users);
+      return this.users;
+    }
+  },
   methods: {
     changeFirstUser() {
       this.users[0] = {
-        id: 11,
+        id: 1,
         name: "Gwendal LE BRIS",
         username: "gwencode",
         email: "gwen@me.com",
@@ -37,7 +70,7 @@ export default {
   <h1>Users</h1>
   <button @click="changeFirstUser">Change First User</button>
   <UserCard
-    v-for="user in users"
+    v-for="user in usersComputed"
     :key="`user-${user.id}`"
     :user="user"
     class="user-card"
