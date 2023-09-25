@@ -8,30 +8,17 @@ export default {
   },
 
   async setup() {
+    const state = reactive({
+      userList: []
+    })
+
     const response = await fetch("https://jsonplaceholder.typicode.com/users")
     const data = await response.json();
     // const users = ref(data);
-
-    const state = reactive({
-      usersState: data
-    })
-    // console.log(state);
-
+    state.userList = data;
     const users = computed(() => {
-      return state.usersState;
+      return state.userList;
     })
-
-    // const usersComputed = computed(() => {
-    //   return this.users.push( {
-    //     id: 12,
-    //     name: "Corentin LE BRIS",
-    //     username: "coco22",
-    //     email: "coco@me.com",
-    //     phone: "06 00 00 00 00"
-    //   });
-    // })
-
-    // console.log(usersComputed);
 
     return {
       users
