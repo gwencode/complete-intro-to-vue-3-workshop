@@ -17,8 +17,6 @@ export default {
       elementType: 'lightning'
     });
 
-    console.log(state);
-
     const elementTypeUpperCase = computed(() => {
       return state.elementType.toUpperCase();
     })
@@ -27,34 +25,35 @@ export default {
     const data = await response.json();
     const pokedex = data.results;
 
+    const changeRegionName = () => {
+      regionName.value = "Hoenn";
+    }
+
     return {
       elementTypeUpperCase,
+      changeRegionName,
       pokedex,
       regionName,
       regionNameUpperCase,
     };
-  },
-  created() {
-    console.log(this.regionName);
-    console.log(this.pokedex);
-  },
-  computed: {
-    regionNameLowerCase() {
-      return this.regionName.toLowerCase()
-    }
-  },
-  methods: {
-    changeRegionName() {
-      this.regionName = "Hoenn";
-    }
   }
+  // computed: {
+  //   regionNameLowerCase() {
+  //     return this.regionName.toLowerCase()
+  //   }
+  // },
+  // methods: {
+  //   changeRegionName() {
+  //     this.regionName = "Hoenn";
+  //   }
+  // }
 }
 </script>
 
 <template>
   <h3>Pokedex of {{ regionName }}</h3>
   <h3>Region Name Uppercase : {{ regionNameUpperCase }}</h3>
-  <h3>Region Name Lowercase : {{ regionNameLowerCase }}</h3>
+  <!-- <h3>Region Name Lowercase : {{ regionNameLowerCase }}</h3> -->
   <button @click="changeRegionName">Change Region Name</button>
   <h3>Element Type Uppercase (with reactive => Proxy) : {{ elementTypeUpperCase }}</h3>
   <pre> {{ pokedex }}</pre>
