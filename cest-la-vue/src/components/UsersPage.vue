@@ -5,21 +5,14 @@ export default {
   components: {
     UserCard
   },
-  data() {
+  async setup() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users")
+    const users = await response.json();
+    console.log(users);
+
     return {
-      users: []
+      users
     }
-  },
-  methods: {
-    async fetchUsers() {
-      const response = await fetch("https://jsonplaceholder.typicode.com/users")
-      const data = await response.json();
-      this.users = data;
-      console.log(this.users);
-    }
-  },
-  created() {
-    this.fetchUsers();
   }
 }
 
@@ -28,7 +21,7 @@ export default {
 <template>
   <h1>Users</h1>
   <UserCard
-    v-cloak v-for="user in users"
+    v-for="user in users"
     :key="`user-${user.id}`"
     :user="user"
     class="user-card"
@@ -36,7 +29,5 @@ export default {
 </template>
 
 <style>
-[v-cloak] {
-  display: none;
-}
+
 </style>
