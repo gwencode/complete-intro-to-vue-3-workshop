@@ -49,7 +49,7 @@ export default {
   <p>Age: {{ age }}</p>
 </template> -->
 
-<style module>
+<style module lang="scss">
 .button {
   border: 10px solid green
 }
