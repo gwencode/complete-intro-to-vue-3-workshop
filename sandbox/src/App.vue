@@ -11,5 +11,10 @@ import UserCard from "./components/UserCard.vue"
 </template>
 
 <style>
-
+html {
+  background-color: papayawhip;
+}
+button {
+  border: 10px solid red !important
+}
 </style>

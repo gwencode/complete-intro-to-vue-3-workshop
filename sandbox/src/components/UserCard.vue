@@ -48,3 +48,9 @@ export default {
   <h1>User: {{ name }}</h1>
   <p>Age: {{ age }}</p>
 </template> -->
+
+<style scoped>
+  button {
+  border: 10px solid green
+}
+</style>
