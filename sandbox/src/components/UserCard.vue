@@ -24,7 +24,7 @@ export default {
   <h1>User: {{ user.name }}</h1>
   <h2>New Count: {{ newCount }}</h2>
   <p>Age: {{ user.age }}</p>
-  <button @click="$emit('change-name')">Change Name</button>
+  <button :class="$style.button" @click="$emit('change-name')">Change Name</button>
 </template>
 
 <!-- TWO PROPS WITH SIMPLE TYPE -->
@@ -49,8 +49,8 @@ export default {
   <p>Age: {{ age }}</p>
 </template> -->
 
-<style scoped>
-  button {
+<style module>
+.button {
   border: 10px solid green
 }
 </style>

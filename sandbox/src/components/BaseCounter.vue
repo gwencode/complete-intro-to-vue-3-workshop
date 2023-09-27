@@ -39,7 +39,7 @@ export default {
   <h1> {{ displayTitle }} </h1>
   <h2>New Count: {{ newCount }} </h2>
   <p> {{ count }} </p>
-  <button @click="incrementCount(incrementAmount, $event)">Increment count</button>
+  <button class="button" @click="incrementCount(incrementAmount, $event)">Increment count</button>
 
   <div style="margin-top: 16px">
     <label for="incrementAmount">Increment by:</label>
