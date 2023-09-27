@@ -12,19 +12,17 @@ const shortUserList = computed(() => {
 </script>
 
 <template>
-  <main>
-    <h1>Welcome to C'est La Vue</h1>
-    <p>
-      This is a place to manage various things: todos, users, posts, etc.<br>
-      Whatever your minde desires!
-    </p>
-    <button @click="changeFirstUser">Change First User</button>
-    <button @click="changeSecondUser">Change Second User</button>
-    <UserCard
-    v-for="user in shortUserList"
-    :key="`user-${user.id}`"
-    :user="user"
-    class="user-card"
-  />
-  </main>
+  <h1>Welcome to C'est La Vue</h1>
+  <p>
+    This is a place to manage various things: todos, users, posts, etc.<br>
+    Whatever your minde desires!
+  </p>
+  <button @click="changeFirstUser">Change First User</button>
+  <button @click="changeSecondUser">Change Second User</button>
+  <UserCard
+  v-for="user in shortUserList"
+  :key="`user-${user.id}`"
+  :user="user"
+  class="user-card"
+/>
 </template>

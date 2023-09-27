@@ -39,19 +39,25 @@ export default {
       <a href="#" @click.prevent="showLoginPage">Login</a>
     </nav>
   </header>
-  <Suspense>
-    <component :is="currentPage + 'Page'" />
-    <template v-slot:fallback>Loading page...</template>
-  </Suspense>
+  <main>
+    <Suspense>
+      <component :is="currentPage + 'Page'" />
+      <template v-slot:fallback>Loading page...</template>
+    </Suspense>
+  </main>
 </template>
 
 <style>
 
-main {
+body {
   background-color: #f5f5f5;
   color: #333;
   font-size: 16px;
   line-height: 1.5;
+  margin: 0;
+}
+
+main {
   margin: 20px;
 }
 
@@ -86,6 +92,18 @@ main {
 
 h1 {
   font-size: 2rem;
+}
+
+button {
+  display: block;
+  background-color: #333;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 10px 0;
+  padding: 10px;
 }
 
 </style>

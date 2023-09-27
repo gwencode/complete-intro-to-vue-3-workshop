@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-  <div class="user-card">
+  <div :class="$style['user-card']">
     <h3>{{ user.id }}. {{ user.name }}</h3>
     <p>Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
@@ -19,7 +19,7 @@ export default {
 
 </template>
 
-<style>
+<style module>
 
 .user-card {
   background-color: #fff;

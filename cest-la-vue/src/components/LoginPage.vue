@@ -1,24 +1,20 @@
-<script>
+<script setup>
+import { ref } from 'vue';
+
+const colorPreference = ref('#e6a00a')
 
 </script>
 
 <template>
-  <main>
-    <h1>Login</h1>
-    <label for="email">Email</label>
-    <input type="email" id="email" />
-    <button>Continue with email</button>
-  </main>
+  <h1>Login</h1>
+  <label for="email">Email</label>
+  <input class="input-email" type="email" id="email" />
+  <button class="login-button">Continue with email</button>
+  <p>Choose button color: {{ colorPreference }}</p>
+  <input type="color" v-model="colorPreference">
 </template>
 
 <style>
-
-body {
-  background-color: #f5f5f5;
-  color: #333;
-  font-size: 16px;
-  line-height: 1.5;
-}
 
 label {
   display: block;
@@ -26,7 +22,7 @@ label {
   margin: 10px 0;
 }
 
-input {
+.input-email {
   display: block;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -35,16 +31,8 @@ input {
   padding: 10px;
 }
 
-button {
-  display: block;
-  background-color: #333;
-  border: 1px solid #333;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1rem;
-  margin: 10px 0;
-  padding: 10px;
+.login-button {
+  background-color: v-bind(colorPreference);
 }
 
 </style>
