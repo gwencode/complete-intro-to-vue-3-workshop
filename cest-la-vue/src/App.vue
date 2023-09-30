@@ -1,31 +1,4 @@
 <script>
-import HomePage from './views/HomePage.vue'
-import LoginPage from './views/LoginPage.vue'
-import UsersPage from './views/UsersPage.vue'
-
-export default {
-  components: {
-    HomePage,
-    LoginPage,
-    UsersPage,
-  },
-  data() {
-    return {
-      currentPage: 'Home'
-    }
-  },
-  methods: {
-   showHomePage() {
-     this.currentPage = 'Home'
-   },
-    showLoginPage() {
-      this.currentPage = 'Login'
-    },
-    showUsersPage() {
-      this.currentPage = 'Users'
-    }
-  }
-}
 </script>
 
 <template>
