@@ -1,8 +1,8 @@
 <script>
-  import FullPokedex from "./components/FullPokedex.vue"
+  import PokedexPage from "./views/PokedexPage.vue"
   export default {
     components: {
-      FullPokedex,
+      PokedexPage,
     }
   }
   </script>
@@ -10,7 +10,7 @@
   <template>
     <h1>New App</h1>
     <Suspense>
-      <FullPokedex region="Kante" />
+      <PokedexPage region="Kante" />
       <template v-slot:fallback>Loading Pokedex data...</template>
     </Suspense>
   </template>

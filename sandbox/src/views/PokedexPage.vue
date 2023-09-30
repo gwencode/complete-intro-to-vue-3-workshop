@@ -1,6 +1,6 @@
 <script setup>
 
-import BaseButton from "./BaseButton.vue";
+import BaseButton from "../components/BaseButton.vue";
 import { computed, defineProps, defineEmits, ref, reactive } from "vue";
 
 const props = defineProps({
