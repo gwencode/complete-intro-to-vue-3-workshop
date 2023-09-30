@@ -1,5 +1,5 @@
 <script setup>
-import UserCard from './UserCard.vue';
+import UserCard from '../components/UserCard.vue';
 import { computed, defineProps, defineEmits, ref, reactive } from "vue";
 import { users } from '../composables/useUserStore';
 import { changeFirstUser, changeSecondUser } from '../composables/useUserFonction';

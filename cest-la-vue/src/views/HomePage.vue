@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import { users } from '../composables/useUserStore';
 import { changeFirstUser, changeSecondUser } from '../composables/useUserFonction';
-import UserCard from './UserCard.vue';
+import UserCard from '../components/UserCard.vue';
 
 const shortUserList = computed(() => {
   return users.value.slice(0, 5)

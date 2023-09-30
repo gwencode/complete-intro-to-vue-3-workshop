@@ -1,7 +1,7 @@
 <script>
-import HomePage from './components/HomePage.vue'
-import LoginPage from './components/LoginPage.vue'
-import UsersPage from './components/UsersPage.vue'
+import HomePage from './views/HomePage.vue'
+import LoginPage from './views/LoginPage.vue'
+import UsersPage from './views/UsersPage.vue'
 
 export default {
   components: {
@@ -34,16 +34,13 @@ export default {
       <img src="@/assets/logo.svg" width="30"> C'est La Vue
     </span>
     <nav class="nav">
-      <a href="#" @click.prevent="showHomePage">Home</a>
-      <a href="#" @click.prevent="showUsersPage">Users</a>
-      <a href="#" @click.prevent="showLoginPage">Login</a>
+      <router-link to="/">Home</router-link>
+      <router-link to="/users">Users</router-link>
+      <router-link to="/login">Login</router-link>
     </nav>
   </header>
   <main>
-    <Suspense>
-      <component :is="currentPage + 'Page'" />
-      <template v-slot:fallback>Loading page...</template>
-    </Suspense>
+    <router-view></router-view>
   </main>
 </template>
 
