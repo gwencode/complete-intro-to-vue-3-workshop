@@ -1,29 +1,26 @@
 <script setup>
+  import UserCard from '@/components/UserCard.vue';
   import { users } from '@/composables/useUserStore';
   import { useRoute } from "vue-router";
   const route = useRoute();
-  const id = route.params.id;
+  const id = parseInt(route.params.id, 10);
 
-  defineProps({
-    title: {
-      type: String,
-      default: 'Users'
-    }
-  })
-
-  console.log(users);
+  console.log(users.value);
   console.log(id);
+  console.log(typeof(id));
+
+  const userFound = users.value.find(user => user.id === id);
+  console.log(userFound);
 
   </script>
 
   <template>
     <h1>Dashboard</h1>
-    <!-- <UserCard
-      v-for="user in users"
-      :key="`user-${user.id}`"
-      :user="user"
+    <UserCard
+      :key="`user-${userFound.id}`"
+      :user="userFound"
       class="user-card"
-    /> -->
+    />
   </template>
 
   <style>
