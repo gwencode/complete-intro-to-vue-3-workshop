@@ -19,3 +19,16 @@ export const changeSecondUser = () => {
   phone: "06 00 00 00 00"
   };
 }
+
+// export const login = (email) => {
+//   // Parcourir l'array users pour trouver l'utilisateur avec l'email donné
+//   for (const user of users.value) {
+//     if (user.email === email) {
+//       console.log(user)
+//       return user
+//     }
+//   }
+
+//   // Si aucun utilisateur correspondant n'est trouvé, renvoyer null
+//   return null;
+// }

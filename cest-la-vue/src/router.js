@@ -6,5 +6,5 @@ export const routes = [
   { path: "/", component: HomePage },
   { path: "/users", component: () => import('@/views/UsersPage.vue') },
   { path: "/users/:id", component: () => import('@/views/DashboardPage.vue') },
-  { path: "/login", component: import('@/views/LoginPage.vue') },
+  { path: "/login", component: () => import('@/views/LoginPage.vue') },
 ]

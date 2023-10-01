@@ -12,6 +12,7 @@
   })
 
   console.log(users);
+  console.log(id);
 
   </script>
 
