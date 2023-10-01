@@ -16,11 +16,10 @@
 
   <template>
     <h1>Dashboard</h1>
-    <UserCard
-      :key="`user-${userFound.id}`"
-      :user="userFound"
-      class="user-card"
-    />
+    <h3>{{ userFound.id }}. {{ userFound.name }}</h3>
+    <p>Username: {{ userFound.username }}</p>
+    <p>Email: {{ userFound.email }}</p>
+    <p>Phone: {{ userFound.phone }}</p>
   </template>
 
   <style>

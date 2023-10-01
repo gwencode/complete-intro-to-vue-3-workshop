@@ -10,12 +10,14 @@ export default {
 </script>
 
 <template>
-  <div :class="$style['user-card']">
-    <h3>{{ user.id }}. {{ user.name }}</h3>
-    <p>Username: {{ user.username }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Phone: {{ user.phone }}</p>
-  </div>
+  <router-link :to="`/users/${user.id}`" :class="$style['link-no-deco']">
+    <div :class="$style['user-card']">
+      <h3>{{ user.id }}. {{ user.name }}</h3>
+      <p>Username: {{ user.username }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Phone: {{ user.phone }}</p>
+    </div>
+  </router-link>
 
 </template>
 
@@ -35,6 +37,11 @@ p {
 
 h3 {
   margin: 0;
+}
+
+.link-no-deco {
+  text-decoration: none;
+  color: black;
 }
 
 </style>
