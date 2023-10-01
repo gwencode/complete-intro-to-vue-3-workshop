@@ -1,12 +1,15 @@
 <script setup>
   import UserCard from '@/components/UserCard.vue';
-  import { users } from '@/composables/useUserStore';
+  // import { users } from '@/composables/useUserStore';
+  import { useUserStore } from "@/stores/UserStore";
   import { useRoute } from "vue-router";
   const route = useRoute();
   // const id = parseInt(route.params.id, 10);
   const name = route.params.name
 
-  const userFound = users.value.find(user => user.name === name);
+  const userStore = useUserStore();
+
+  const userFound = userStore.userList.find(user => user.name === name);
   console.log(userFound);
 
   </script>

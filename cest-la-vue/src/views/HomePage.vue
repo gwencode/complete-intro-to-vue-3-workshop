@@ -1,19 +1,19 @@
 <script setup>
 import { computed } from "vue";
-import { users } from '../composables/useUserStore';
+// import { users } from '../composables/useUserStore';
 import { useUserStore } from "@/stores/UserStore";
 
-import { changeFirstUser, changeSecondUser } from '../composables/useUserFonction';
+// import { changeFirstUser, changeSecondUser } from '../composables/useUserFonction';
 import UserCard from '../components/UserCard.vue';
 
-const shortUserList = computed(() => {
-  return users.value.slice(0, 5)
+// const shortUserList = computed(() => {
+//   return users.value.slice(0, 5)
 
-})
+// })
 
 const userStore = useUserStore();
 // Check if we already have users
-if (userStore.newUsers.length === 0) {
+if (userStore.userList.length === 0) {
   userStore.fetchUsers();
 }
 

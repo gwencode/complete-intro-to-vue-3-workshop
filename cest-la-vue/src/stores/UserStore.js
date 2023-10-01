@@ -3,13 +3,13 @@ import { defineStore } from 'pinia'
 export const useUserStore = defineStore('UserStore', {
   // Data
   state: () => ({
-    newUsers: []
+    userList: []
   }),
 
   // Computed
   getters: {
     shortUserList: (state) => {
-      return state.newUsers.slice(0, 5)
+      return state.userList.slice(0, 5)
     }
   },
 
@@ -17,11 +17,11 @@ export const useUserStore = defineStore('UserStore', {
   actions: {
     async fetchUsers() {
       const response = await fetch("https://jsonplaceholder.typicode.com/users")
-      const data = await response.json();
-      this.newUsers = data;
+      .then(response => response.json())
+      this.userList = response;
     },
     newChangeFirstUser() {
-      this.newUsers[0] = {
+      this.userList[0] = {
         id: 1,
         name: "Gwendal LE BRIS",
         username: "gwencode",
@@ -30,7 +30,7 @@ export const useUserStore = defineStore('UserStore', {
       };
     },
     newChangeSecondUser() {
-      this.newUsers[1] = {
+      this.userList[1] = {
         id: 2,
         name: "Corentin LE BRIS",
         username: "coco22",

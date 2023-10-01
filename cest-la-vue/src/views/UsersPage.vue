@@ -1,8 +1,9 @@
 <script setup>
 import UserCard from '@/components/UserCard.vue';
 import { computed, defineProps, defineEmits, ref, reactive } from "vue";
-import { users } from '@/composables/useUserStore';
-import { changeFirstUser, changeSecondUser } from '@/composables/useUserFonction';
+// import { users } from '@/composables/useUserStore';
+// import { changeFirstUser, changeSecondUser } from '@/composables/useUserFonction';
+import { useUserStore } from "@/stores/UserStore";
 
 defineProps({
   title: {
@@ -10,6 +11,12 @@ defineProps({
     default: 'Users'
   }
 })
+
+const userStore = useUserStore();
+// Check if we already have users
+if (userStore.userList.length === 0) {
+  userStore.fetchUsers();
+}
 
 // const emits = defineEmits(['change-first-user']);
 
@@ -28,10 +35,10 @@ defineProps({
 
 <template>
   <h1>{{ title }}</h1>
-  <button @click="changeFirstUser">Change First User</button>
-  <button @click="changeSecondUser">Change Second User</button>
+  <button @click="userStore.newChangeFirstUser">Change First User</button>
+  <button @click="userStore.newChangeSecondUser">Change Second User</button>
   <UserCard
-    v-for="user in users"
+    v-for="user in userStore.userList"
     :key="`user-${user.id}`"
     :user="user"
     class="user-card"
