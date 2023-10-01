@@ -34,7 +34,7 @@ if (userStore.userList.length === 0) {
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <h1>{{ userStore.userList.length }} {{ title }}</h1>
   <button @click="userStore.newChangeFirstUser">Change First User</button>
   <button @click="userStore.newChangeSecondUser">Change Second User</button>
   <UserCard
