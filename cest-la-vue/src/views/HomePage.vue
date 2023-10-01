@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { users } from '../composables/useUserStore';
-import { UsersStore } from "@/stores/UsersStore";
+import { useUserStore } from "@/stores/UserStore";
 
 import { changeFirstUser, changeSecondUser } from '../composables/useUserFonction';
 import UserCard from '../components/UserCard.vue';
@@ -11,13 +11,11 @@ const shortUserList = computed(() => {
 
 })
 
-const usersStore = UsersStore();
-usersStore.fetchUsers();
-
-const newShortUserList = computed(() => {
-  return usersStore.newUsers.slice(0, 5)
-
-})
+const userStore = useUserStore();
+// Check if we already have users
+if (userStore.newUsers.length === 0) {
+  userStore.fetchUsers();
+}
 
 </script>
 
@@ -27,10 +25,10 @@ const newShortUserList = computed(() => {
     This is a place to manage various things: todos, users, posts, etc.<br>
     Whatever your minde desires!
   </p>
-  <button @click="usersStore.newChangeFirstUser">Change First User</button>
-  <button @click="usersStore.newChangeSecondUser">Change Second User</button>
+  <button @click="userStore.newChangeFirstUser">Change First User</button>
+  <button @click="userStore.newChangeSecondUser">Change Second User</button>
   <UserCard
-  v-for="user in newShortUserList"
+  v-for="user in userStore.shortUserList"
   :key="`user-${user.id}`"
   :user="user"
   class="user-card"

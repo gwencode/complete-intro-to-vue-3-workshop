@@ -13,7 +13,10 @@
     </nav>
   </header>
   <main>
-    <router-view></router-view>
+    <Suspense>
+      <router-view></router-view>
+      <template v-slot:fallback>Loading Users...</template>
+    </Suspense>
   </main>
 </template>
 

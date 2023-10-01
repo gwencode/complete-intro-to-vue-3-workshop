@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const UsersStore = defineStore('UsersStore', {
+export const useUserStore = defineStore('UserStore', {
   // Data
   state: () => ({
     newUsers: []
@@ -8,7 +8,9 @@ export const UsersStore = defineStore('UsersStore', {
 
   // Computed
   getters: {
-
+    shortUserList: (state) => {
+      return state.newUsers.slice(0, 5)
+    }
   },
 
   // Methods
