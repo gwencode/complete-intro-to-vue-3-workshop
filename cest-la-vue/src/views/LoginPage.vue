@@ -11,16 +11,14 @@ const userLogin = ref(null);
 const login = () => {
   if (emailInput.value.includes("@") && emailInput.value.length > 3) {
     console.log("Valid User");
-      // Parcourir l'array users pour trouver l'utilisateur avec l'email donné
-      for (const user of users.value) {
-        if (user.email === emailInput.value) {
-          console.log(user)
-          router.push(`users/${user.id}`)
-        }
-      }
-      // Si aucun utilisateur correspondant n'est trouvé, renvoyer null
+    const userFound = users.value.find(user => user.email === emailInput.value);
+    console.log(userFound)
+    if (userFound != undefined) {
+      router.push(`users/${userFound.id}`)
+    }
+    else {
       console.log("User not found")
-      return null;
+    }
   } else {
     console.log("Invalid User");
   }
