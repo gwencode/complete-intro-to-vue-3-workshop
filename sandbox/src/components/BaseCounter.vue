@@ -1,10 +1,13 @@
 <script>
 import { newCount } from '../composables/useCountStore'
+import { useCountStore } from "@/stores/CountStore";
 
 export default {
   setup() {
+    const newCountStore = useCountStore();
     return {
       newCount,
+      newCountStore,
     };
   },
   data: () => ({
@@ -37,6 +40,8 @@ export default {
 
 <template>
   <h1> {{ displayTitle }} </h1>
+  <h2>Counter Version with Store: {{ newCountStore.count }}</h2>
+  <button @click="newCountStore.increment">Increment with Store</button>
   <h2>New Count: {{ newCount }} </h2>
   <p> {{ count }} </p>
   <button class="button" @click="incrementCount(incrementAmount, $event)">Increment count</button>
