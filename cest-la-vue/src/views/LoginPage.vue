@@ -1,17 +1,19 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { users } from '@/composables/useUserStore';
+// import { users } from '@/composables/useUserStore';
+import { useUserStore } from "@/stores/UserStore";
 
 const colorPreference = ref('#e6a00a')
 const emailInput = ref("");
 const router = useRouter();
 const userLogin = ref(null);
+const userStore = useUserStore();
 
 const login = () => {
   if (emailInput.value.includes("@") && emailInput.value.length > 3) {
     console.log("Valid User");
-    const userFound = users.value.find(user => user.email === emailInput.value);
+    const userFound = userStore.userList.find(user => user.email === emailInput.value);
     console.log(userFound)
     if (userFound != undefined) {
       router.push(`users/${userFound.name}`)
