@@ -14,7 +14,7 @@ const login = () => {
     const userFound = users.value.find(user => user.email === emailInput.value);
     console.log(userFound)
     if (userFound != undefined) {
-      router.push(`users/${userFound.id}`)
+      router.push(`users/${userFound.name}`)
     }
     else {
       console.log("User not found")

@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-  <router-link :to="`/users/${user.id}`" :class="$style['link-no-deco']">
+  <router-link :to="`/users/${user.name}`" :class="$style['link-no-deco']">
     <div :class="$style['user-card']">
       <h3>{{ user.id }}. {{ user.name }}</h3>
       <p>Username: {{ user.username }}</p>

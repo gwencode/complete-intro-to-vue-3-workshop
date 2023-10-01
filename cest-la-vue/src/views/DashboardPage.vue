@@ -3,13 +3,10 @@
   import { users } from '@/composables/useUserStore';
   import { useRoute } from "vue-router";
   const route = useRoute();
-  const id = parseInt(route.params.id, 10);
+  // const id = parseInt(route.params.id, 10);
+  const name = route.params.name
 
-  console.log(users.value);
-  console.log(id);
-  console.log(typeof(id));
-
-  const userFound = users.value.find(user => user.id === id);
+  const userFound = users.value.find(user => user.name === name);
   console.log(userFound);
 
   </script>
